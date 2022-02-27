@@ -15,3 +15,28 @@ code {
 .header{
   text-align: center;
 }
+
+.dropdown{
+  background-color: #3D5C7F;
+  color: white;
+  padding: 12px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 30px;
+ 
+    position: relative;
+    display: inline-block;
+  
+}
+
+/* .row{
+  
+    background-image: url(./photo/colo.jpg);
+  } */
+
+  /* .interface{
+    background-image: url(./photo/pexels-moose-photos-1037993.jpg);
+    color: aliceblue;
+  } */
+

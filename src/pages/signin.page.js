@@ -1,6 +1,34 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { signin } from '../services/user.service'
 
 const SigninPage = (props) => {
+
+  const [userEmail, setUseremail] = useState('')
+  const [userPassword, setPassword] = useState('')
+
+  const navigate = useNavigate()
+
+  const onSignin = async () => {
+    if (userEmail.length === 0) {
+      alert('enter email ID')
+    } else if (userPassword.length === 0) {
+      alert('set password')
+    } else {
+      const result = await signin(userEmail, userPassword)
+      if (result) {
+        const { token } = result
+
+        sessionStorage['token'] = token
+        sessionStorage['userEmail'] = userEmail
+
+        navigate('/home-page')
+      } else {
+        alert('invalid username or password')
+      }
+    }
+  }
+
     return(
         <div>
             <div className="interface">
@@ -9,7 +37,7 @@ const SigninPage = (props) => {
 
       <div className="row">
         <div className="col-md-6">
-          <img src="../Images/blogging.jpg" alt="Image" className="img-fluid" />
+          <img src={"../photo/blogging.jpg"} alt="pic" className="img-fluid" />
         </div>
 
          <div className="col-md-6 contents">
@@ -23,20 +51,24 @@ const SigninPage = (props) => {
             <p className="mb-4"> “Create something people want to share.” - John Jantsch</p>
               <div className="form">
                 <label for="username">Email</label>
-                <input type="email" className="form-control" id="email" />
+                <input onChange={(e) => {
+              setUseremail(e.target.value)
+            }} 
+            type="email" className="form-control" id="email" />
               </div>
 
               <div className="form mb-4">
                 <label for="password">Password</label>
-                <input type="password" className="form-control" id="password" />
+                <input onChange={(e) => {
+              setPassword(e.target.value)
+            }} 
+                 type="password" className="form-control" id="password" />
               </div>
 
               <div className="mb-4">
           <div> If you don't have account Signup <Link to="/signup">here</Link> </div>
-          <button  className="btn btn-success"> Signin </button>
+          <button onClick={onSignin} className="btn btn-success"> Signin </button>
         </div>
-
-              {/* <input type="submit" value="Log In" className="btn btn-block btn-primary" /> */}
 
             </div>
           </div>
