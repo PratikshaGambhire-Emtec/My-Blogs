@@ -26,8 +26,17 @@ code {
   border-radius: 30px;
  
     position: relative;
-    display: inline-block;
-  
+    display: flex;
+    /* overflow: hidden; */
+    
+}
+
+.card{
+  margin: 20px;
+}
+
+.dropdown dropdown-menu{
+  float: right;
 }
 
 /* .row{

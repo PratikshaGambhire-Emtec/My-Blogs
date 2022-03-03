@@ -19,6 +19,7 @@ function App() {
        <Route path="create-blog" element={<CreateBlogPage />} />
        <Route path="blog-details" element={<BlogDetailsPage />} />
        <Route path="profile-page" element={<ProfilePage />} />
+      
        
     </Routes>
    </BrowserRouter>

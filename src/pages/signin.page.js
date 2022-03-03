@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { signin } from '../services/user.service'
+import BGRN from '../photo/BGRN.jpg'
 
 const SigninPage = (props) => {
 
@@ -37,7 +38,7 @@ const SigninPage = (props) => {
 
       <div className="row">
         <div className="col-md-6">
-          <img src={"../photo/blogging.jpg"} alt="pic" className="img-fluid" />
+          <img src={ BGRN } alt="pic" className="img-fluid" />
         </div>
 
          <div className="col-md-6 contents">

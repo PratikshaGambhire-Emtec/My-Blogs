@@ -32,3 +32,31 @@ export const signin =async (userEmail, userPassword)=>{
     return result
 
 }
+
+
+
+export const updateprofile = async (firstName, lastName, userEmail, userCity, userState, userCountry, userPostalCode, userBirthDate, userGender) => {
+    const url = setting.server + `/bloggers/updateprofile`
+    let result
+    try {
+        result = await axios.post(url,
+            {
+                firstName, lastName, userEmail, userCity, userState, userCountry,
+                userPostalCode, userBirthDate, userGender,
+            },
+        )
+        result = result.data
+    }
+    catch (ex) {
+        console.log(ex)
+    }
+    sessionStorage['firstName'] = result.firstName
+    sessionStorage['lastName'] = result.lastName
+    sessionStorage['userCity'] = result.userCity
+    sessionStorage['userState'] = result.userState
+    sessionStorage['userCountry'] = result.userCountry
+    sessionStorage['userPostalCode'] = result.userPostalCode
+    sessionStorage['userBirthDate'] = result.userBirthDate
+    sessionStorage['userGender'] = result.userGender
+    return result
+}
