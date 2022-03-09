@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Delete, Get, Post, UseGuards, UsePipes, ValidationPipe } from "@nestjs/common";
+import { Body, Param, Controller, Delete, Get, Post, UseGuards, UsePipes, ValidationPipe } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 import { UserEntity } from "src/entity/user.entity";
 import { GetUser } from "src/users/get.user.decorator";
@@ -58,6 +58,22 @@ export class BlogsController {
     getBlog(@GetUser() user: UserEntity) {
         console.log(user)
         return this.blogservice.getMyblogs(user)
+    }
+
+    @Post('WriteComment')
+    addComment(@Body('id') id: number, @Body('userComment') userComment: string, @GetUser() user: UserEntity) {
+        return this.blogservice.addComment(id, userComment, user);
+    }
+
+    @Get('getcomments/:id')
+    getComments(@Param('id') id: number) {
+        console.log(id)
+        return this.blogservice.getComments(id);
+    }
+
+    @Delete('deletecomments/:id')
+    deleteComments(@Param('id') id: number) {
+        return this.blogservice.deleteComments(id);
     }
 
 }

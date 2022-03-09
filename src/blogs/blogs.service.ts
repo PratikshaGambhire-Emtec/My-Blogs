@@ -23,7 +23,6 @@ export class BlogServices {
     }
 
     deleteBlog(id: number) {
-        //this.blogCommentRepository.deleteComment(id);
         return this.blogRepository.deleteBlog(id);
     }
 
@@ -47,6 +46,18 @@ export class BlogServices {
 
     getMyblogs(user: UserEntity) {
         return this.blogRepository.getMyblogs(user);
+    }
+
+    addComment(id: number, userComment: string, user: UserEntity) {
+        return this.blogCommentRepository.addComment(id, userComment, user);
+    }
+
+    getComments(id: number) {
+        return this.blogCommentRepository.getComments(id);
+    }
+
+    deleteComments(id: number) {
+        return this.blogCommentRepository.deleteComment(id)
     }
 
 }

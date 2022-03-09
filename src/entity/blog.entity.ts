@@ -4,7 +4,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, Unique, OneToMany, ManyToOne, BaseEntity } from 'typeorm';
 import { UserEntity } from './user.entity';
 import { IsNotEmpty } from 'class-validator';
-import { BlogCommentEntity } from 'src/entity/blog.comments.entity';
+import { CommentEntity } from 'src/entity/blog.comments.entity';
 import { type } from 'os';
 import { BlogTag } from 'src/blogs/blog.tag.enum';
 
@@ -38,6 +38,6 @@ export class BlogEntity extends BaseEntity {
     @ManyToOne(type => UserEntity, user => user.blogs, { eager: false })
     user: UserEntity;
 
-    /* @OneToMany(type => BlogCommentEnt *//* ity, comment => comment.blog, { eager: false }) */
-    /* comments: BlogCommentEntity[]; */
+    @OneToMany(type => CommentEntity, comment => comment.blog, { eager: false })
+    comments: CommentEntity[];
 }

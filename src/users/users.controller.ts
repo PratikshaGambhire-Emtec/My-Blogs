@@ -29,7 +29,7 @@ export class UserController {
         return this.userService.signin(authCredentialsDto);
     }
 
-    @Post('updateprofile')
+    @Put('updateprofile')
     updateProfile(@Body() profileDto: ProfileDto) {
         console.log(profileDto.userEmail)
         return this.userService.updateProfile(profileDto);
