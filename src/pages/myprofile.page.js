@@ -1,51 +1,80 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { updateProfile } from '../services/blogs.service';
+import { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import React, { Component } from 'react';
+import { updateprofile } from '../services/user.service';
 
 const ProfilePage = (props) => {
-  
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setlastName] = useState("");
-  const [userPassword, setPassword] = useState("");
-  const [userCity, setCity] = useState("");
-  const [userState, setState] = useState("");
-  const [userCountry, setCountry] = useState("");
-  const [userPostalcode, setPostalcode] = useState("");
-  const [userBirthDate, setBirthDate] = useState("");
-  const [userGender, setGender] = useState("");
 
-  const navigate = useNavigate()
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [userCity, setCity] = useState('')
+    const [userState, setState] = useState('')
+    const [userCountry, setCountry] = useState('')
+    const [userPostalCode, setPostalCode] = useState('')
+    const [userBirthDate, setBirthDate] = useState('')
+    const [userGender, setGender] = useState('')
 
-  const onUpdateProfile = async () => {
-    
-         //console.log(sessionStorage['id'])
-         console.log("some text")
-         console.log(firstName+" "+lastName)
-        const result = await updateProfile(firstName, lastName,sessionStorage.getItem('userEmail'), userPassword, userCity, userState, userCountry, userPostalcode, userBirthDate, userGender)
+    const navigate = useNavigate()
+
+    const onUpdateProfile = async () => {
+        console.log(userCountry)
+        const result = await updateprofile(firstName, lastName, sessionStorage['userEmail'], userCity, userState, userCountry, userPostalCode, userBirthDate, userGender)
+        console.log(result)
         if (result) {
-          sessionStorage.removeItem('token')
-          sessionStorage.removeItem('userEmail')
-            navigate('/signin')
-        } else {
-          sessionStorage.removeItem('token')
-          sessionStorage.removeItem('userEmail')
-            navigate('/signin')
+            sessionStorage['user'] = result
+            navigate('/user-specific')
         }
-}
+    }
 
-// const logout = () => {
+    // const createBlog = async () => {
+    //     navigate('/createBlog')
+    // }
 
-//   sessionStorage.removeItem('token')
-//   sessionStorage.removeItem('userEmail')
-//   navigate('/signin')
-// }
+    // const myProfile = async () => {
+    //     navigate('/home-page')
+    // }
 
- 
-   return(
-        <div>
-            <h1 className="header"> My Profile</h1>
-            <form className="row g-3">
-            <div className="col-md-6">
+    // const myBlogs = async () => {
+    //     navigate('/home-page')
+    // }
+
+    const logout = () => {
+        sessionStorage.removeItem('token')
+        sessionStorage.removeItem('userEmail')
+        sessionStorage.clear()
+        navigate('/signin')
+    }
+
+    const getallBlogs = () => {
+        navigate('/home-page')
+    }
+
+    return (
+        <div className="page">
+            
+            <div className='currentprofile'>
+            <div className="dropdown">
+                <a className="btn btn-secondary dropdown-toggle" 
+                href="#" role="button" 
+                id="dropdownMenuLink" 
+                data-bs-toggle="dropdown"  
+                aria-expanded="false" >
+                    Welcome  { sessionStorage.getItem('firstName')} </a>
+
+                <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li ><a className="dropdown-item" href="/create-blog  "> Create Blog</a></li>
+                <li ><a className="dropdown-item" href="/home-page">All Blogs</a></li>
+                <li ><a className="dropdown-item" href="/user-specific">My Blogs</a></li>
+
+                <button onClick={logout} > Logout </button>
+                </ul>
+                   <h1 className="viewpageheader">Update Profile</h1>     
+
+                </div>
+                </div>
+
+                <form className="row g-3">
+             <div className="col-md-6">
     <label for="inputAddress" className="form-label">First Name</label>
     <input onChange={(e) => {
                             setFirstName(e.target.value)
@@ -54,7 +83,7 @@ const ProfilePage = (props) => {
   <div className="col-md-6">
     <label for="inputAddress2" className="form-label">Last Name </label>
     <input onChange={(e) => {
-                            setlastName(e.target.value)
+                            setLastName(e.target.value)
                         }} type="text" className="form-control" id="inputAddress2" placeholder="Your Last Name"/>
   </div>
 
@@ -84,22 +113,22 @@ const ProfilePage = (props) => {
       <option>Gujrat</option>
       <option>Kerala</option>
       <option>Karnataka</option>
-      <option>Asam</option>
-    </select>
-  </div>
+       <option>Asam</option>
+     </select>
+   </div>
 
-  <div className="col-md-6">
-    <label for="inputCity" className="form-label">Country</label>
-    <input onChange={(e) => {
+   <div className="col-md-6">
+     <label for="inputCity" className="form-label">Country</label>
+     <input onChange={(e) => {
                             setCountry(e.target.value)
                         }} type="text" className="form-control" id="inputCountry"/>
-  </div>
+   </div>
   
   <div className="col-md-6">
     <label for="inputCity" className="form-label">Postal-Code</label>
-    <input onChange={(e) => {
-                            setPostalcode(e.target.value)
-                        }} type="text" className="form-control" id="inputPostal"/>
+     <input onChange={(e) => {
+                             setPostalCode(e.target.value)
+                        }} type="text" className="form-control" id="inputPostal"/> 
   </div>
   
 
@@ -112,7 +141,7 @@ const ProfilePage = (props) => {
 
   
   <div className="col-md-6">
-    <label for="inputGender" className="form-label">Gender</label>
+     <label for="inputGender" className="form-label">Gender</label>
     <select onChange={(e) => {
                             setGender(e.target.value)
                         }} id="inputGender" className="form-select">
@@ -126,11 +155,12 @@ const ProfilePage = (props) => {
   <div className="col-md-6">
   </div>
   <div className="col-12">
-    <button onClick={onUpdateProfile} type="submit" className="btn btn-primary">Update Profile</button>
-  </div>
-</form>
-        </div>
+     <button onClick={onUpdateProfile} type="submit" className="btn btn-primary">Update Profile</button>
+   </div>
+ </form>
+        </div >
     )
 }
 
 export default ProfilePage
+

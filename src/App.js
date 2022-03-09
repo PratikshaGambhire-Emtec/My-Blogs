@@ -5,6 +5,11 @@ import HomePage from "./pages/home.page";
 import ProfilePage from "./pages/myprofile.page";
 import SigninPage from "./pages/signin.page";
 import SignupPage from "./pages/signup.page";
+import UserSpecific from "./pages/UserSpecific.page";
+import BlogViewPage from "./pages/view.blog.page";
+
+
+
 
 function App() {
    return ( <div className="container" >
@@ -19,7 +24,8 @@ function App() {
        <Route path="create-blog" element={<CreateBlogPage />} />
        <Route path="blog-details" element={<BlogDetailsPage />} />
        <Route path="profile-page" element={<ProfilePage />} />
-      
+       <Route path="user-specific" element={<UserSpecific />} />
+       <Route path="viewblog" element={<BlogViewPage />} /> 
        
     </Routes>
    </BrowserRouter>

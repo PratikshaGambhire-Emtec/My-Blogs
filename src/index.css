@@ -17,7 +17,7 @@ code {
 }
 
 .dropdown{
-  background-color: #3D5C7F;
+  background-color: #db938a;
   color: white;
   padding: 12px;
   font-size: 14px;
@@ -31,13 +31,74 @@ code {
     
 }
 
-.card{
+.card:nth-of-type(odd){
   margin: 20px;
+  background-color: rgb(165, 165, 165);;
+  color: aliceblue;
+  margin-right :  5%;
+  border-radius: 13%
+
+
+}
+.card:nth-of-type(even){
+  margin: 20px;
+  color: rgb(56, 54, 54);
+  background-color: LightGray;
+  margin-left : 5%;
+  border-radius: 15%;
+  border-style: double;
+}
+
+.card{
+  display: inline-block;
+  width: 28rem;
+  height: 250px;
+
 }
 
 .dropdown dropdown-menu{
   float: right;
 }
+
+.viewpageheader{
+  margin-left: 330px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+  background-color: white;
+  color: black;
+}
+
+.cards button:hover {
+  opacity: 0.7;
+  background-color: white;
+  color: black;
+}
+
+.cards{
+  margin: 20px;
+  background-color: antiquewhite;
+  
+}
+
+.card-text{
+  display: inline-block;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 4.8em;
+  
+}
+
+/* .row {
+  width: 980px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.card {
+  width: 100px;
+} */
 
 /* .row{
   
@@ -49,3 +110,49 @@ code {
     color: aliceblue;
   } */
 
+  .page{
+    background-color: #fcd2af;
+    margin-left: -60px;
+    margin-right: -70px;
+    padding-left: 95px;
+    padding-right: 95px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+  }
+
+  /* .writeComment{
+    float: right;
+    width: 200px; 
+    height: 40px;
+    margin-bottom: 40px;
+    padding: 45px;
+    margin: 45px;
+  } */
+
+  .laptop{
+    padding-top: 80px ;
+    padding-bottom: 80px;
+    margin-left: -60px;
+    margin-right: -70px;
+      background: url(photo/Canva.png); 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+    .page1{
+      padding-top: 80px ;
+      padding-bottom: 80px;
+      margin-left: -60px;
+      margin-right: -70px;
+        background: url(photo/Untitled\ design\ \(4\).png); 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+  

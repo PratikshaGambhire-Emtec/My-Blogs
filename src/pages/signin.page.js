@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { signin } from '../services/user.service'
-import BGRN from '../photo/BGRN.jpg'
+import BGRN from '../photo/Canva.png'
 
 const SigninPage = (props) => {
 
@@ -31,26 +31,29 @@ const SigninPage = (props) => {
   }
 
     return(
-        <div>
+        <div className='laptop'>
             <div className="interface">
-            <div className="content">
+            <div className="content" style={{fontFamily: 'cursive'}}>
+           
     <div className="container">
+    
 
       <div className="row">
         <div className="col-md-6">
-          <img src={ BGRN } alt="pic" className="img-fluid" />
+         
         </div>
 
          <div className="col-md-6 contents">
           <div className="row justify-content-center">
             <div className="col-md-8"> 
               <div className="mb-4">
-              <h2 >Sign In</h2>
+                <h1 style={{color :'Highlight', float:'center'}}>'Blogging App'</h1>
+              <h2 style={{color :'steelblue'}}>Sign In</h2>
             </div>
 
           
-            <p className="mb-4"> “Create something people want to share.” - John Jantsch</p>
-              <div className="form">
+            <p className="mb-4" style={{color :'Highlight'}}> “Create something people want to share.” - John Jantsch</p>
+              <div className="form" style={{color :'steelblue'}}>
                 <label for="username">Email</label>
                 <input onChange={(e) => {
               setUseremail(e.target.value)
@@ -58,7 +61,7 @@ const SigninPage = (props) => {
             type="email" className="form-control" id="email" />
               </div>
 
-              <div className="form mb-4">
+              <div className="form mb-4" style={{color :'steelblue'}}>
                 <label for="password">Password</label>
                 <input onChange={(e) => {
               setPassword(e.target.value)
@@ -68,7 +71,7 @@ const SigninPage = (props) => {
 
               <div className="mb-4">
           <div> If you don't have account Signup <Link to="/signup">here</Link> </div>
-          <button onClick={onSignin} className="btn btn-success"> Signin </button>
+          <button onClick={onSignin} className="btn btn-success" style={{backgroundColor: 'ButtonShadow'}}> Signin </button>
         </div>
 
             </div>

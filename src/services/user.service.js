@@ -39,7 +39,7 @@ export const updateprofile = async (firstName, lastName, userEmail, userCity, us
     const url = setting.server + `/bloggers/updateprofile`
     let result
     try {
-        result = await axios.post(url,
+        result = await axios.put(url,
             {
                 firstName, lastName, userEmail, userCity, userState, userCountry,
                 userPostalCode, userBirthDate, userGender,

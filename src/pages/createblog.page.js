@@ -33,7 +33,7 @@ const CreateBlogPage = (props) => {
 
 
     return(
-        <div>
+        <div className="page">
             <h1 className="header">Create Blog</h1>
             <div className="form">
         <div className="mb-3">
